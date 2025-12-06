@@ -1,37 +1,54 @@
 [
   {
     "Id": 1,
-    "Titulo": "Mi laptop no se conecta a internet",
-    "Descripcion": "Desde ayer no tengo red en mi laptop, ya revisé el cable ethernet y todo está bien.",
+    "Titulo": "Instalación aplicativo Teams",
+    "Descripcion": "Saludos, \n\nSolicito que me ayuden con el aplicativo Teams en mi laptop, ya que tengo una reunión a las 4pm.",
     "Prioridad": "Baja",
-    "FechaCreacion": "2025-12-06T12:56:45.6543603-05:00"
+    "FechaCreacion": "2025-12-06T14:50:24.885076-05:00",
+    "NombreUsuario": "María Alejandra López Iturralde",
+    "Area": "Control Interno",
+    "Email": "Alejandralopez@net.com",
+    "Telefono": "0984347970",
+    "Estado": "En Proceso",
+    "ComentarioAdmin": ""
   },
   {
     "Id": 2,
-    "Titulo": "No puedo ingresar a mi cuenta office",
-    "Descripcion": "Aparece un mensaje diciendo que no tengo acceso al recurso.",
+    "Titulo": "No tengo internet en mi equipo",
+    "Descripcion": "Por favor , su ayuda con mi equipo ya que no tengo internet desde el ingreso y no puedo trabajar.",
     "Prioridad": "Baja",
-    "FechaCreacion": "2025-12-06T13:07:40.4575478-05:00"
+    "FechaCreacion": "2025-12-06T14:52:42.7176789-05:00",
+    "NombreUsuario": "Carlos Alberto López Iturralde",
+    "Area": "Banca Relacional",
+    "Email": "CarlosLópez@net.com",
+    "Telefono": "098526348",
+    "Estado": "Cancelado",
+    "ComentarioAdmin": "Compete a Banco"
   },
   {
     "Id": 3,
-    "Titulo": "No puedo usar mi cuenta profesional para ingresar a las páginas del trabajo",
-    "Descripcion": "Me aparece solamente la opción para usar mi cuenta personal y no puedo trabajar.",
+    "Titulo": "Toda el área no tiene internet",
+    "Descripcion": "Su ayuda, toda el área de Banco no tiene internet. Los procesos están detenidos.",
     "Prioridad": "Alta",
-    "FechaCreacion": "2025-12-06T13:09:06.4459949-05:00"
+    "FechaCreacion": "2025-12-06T14:54:11.097778-05:00",
+    "NombreUsuario": "Luis Eduardo Heredia Jaramillo",
+    "Area": "Banco",
+    "Email": "LuisHeredia@net.com",
+    "Telefono": "098635896",
+    "Estado": "Cerrado",
+    "ComentarioAdmin": "Estimado, se procedió con la verificación y la respectiva reconexión a internet."
   },
   {
     "Id": 4,
-    "Titulo": "Toda el área no tiene conexión a internet",
-    "Descripcion": "Desde la mañana ninguna laptop tiene red y estamos retrasados en los procesos.",
-    "Prioridad": "Alta",
-    "FechaCreacion": "2025-12-06T13:09:36.0313227-05:00"
-  },
-  {
-    "Id": 5,
-    "Titulo": "Informe inventario equipos",
-    "Descripcion": "Requiero el informe actualizado de los equipos que se tienen en el proyecto para la reunión del día jueves 18 de diciembre.",
-    "Prioridad": "Media",
-    "FechaCreacion": "2025-12-06T13:10:55.5704286-05:00"
+    "Titulo": "Nuevo Ingreso",
+    "Descripcion": "Por favor, su ayuda con las credenciales del nuevo ingreso del lunes 8 de diciembre.",
+    "Prioridad": "Baja",
+    "FechaCreacion": "2025-12-06T15:11:39.9178896-05:00",
+    "NombreUsuario": "Victor Guillermo Guerrero López",
+    "Area": "People",
+    "Email": "VictorGuerrero@net.com",
+    "Telefono": "0985247856",
+    "Estado": "Abierto",
+    "ComentarioAdmin": null
   }
 ]

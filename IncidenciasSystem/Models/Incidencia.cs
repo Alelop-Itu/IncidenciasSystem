@@ -5,6 +5,7 @@ namespace IncidenciasSystem.Models
 {
     public class Incidencia
     {
+        // Campos Originales
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El título es obligatorio.")]
@@ -19,5 +20,28 @@ namespace IncidenciasSystem.Models
         public string Prioridad { get; set; }
 
         public DateTime FechaCreacion { get; set; }
+
+        // === PROPIEDADES NUEVAS DE SOLICITANTE ===
+
+        [Required(ErrorMessage = "El nombre del usuario es obligatorio.")]
+        public string NombreUsuario { get; set; }
+
+        [Required(ErrorMessage = "El área es obligatoria.")]
+        public string Area { get; set; }
+
+        [Required(ErrorMessage = "El correo es obligatorio.")]
+        [EmailAddress(ErrorMessage = "El formato del correo es inválido.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "El teléfono es obligatorio.")]
+        public string Telefono { get; set; }
+
+        // === PROPIEDADES NUEVAS DE ADMINISTRACIÓN Y ESTADO ===
+
+        [Required]
+        [RegularExpression("^(Abierto|En Proceso|Cancelado|Cerrado)$", ErrorMessage = "Estado debe ser Abierto, En Proceso, Cancelado o Cerrado.")]
+        public string Estado { get; set; }
+
+        public string ComentarioAdmin { get; set; }
     }
 }

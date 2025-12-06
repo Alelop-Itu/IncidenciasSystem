@@ -31,12 +31,25 @@ namespace IncidenciasSystem.Controllers
         // POST: api/Incidencias (Crear)
         public IHttpActionResult Post(Incidencia incidencia)
         {
-            if (!EsAdmin()) return Content(HttpStatusCode.Forbidden, "Solo Administradores.");
+            // Obtener el rol del encabezado
+            string rol = Request.Headers.Contains("Rol-Usuario") ? Request.Headers.GetValues("Rol-Usuario").FirstOrDefault() : "";
+
+            // PERMISO: Solo Admin y Usuario pueden crear (Se deniega si el rol es inválido o nulo)
+            if (rol != "Admin" && rol != "Usuario")
+            {
+                // Devolvemos el mensaje que espera el frontend
+                return Content(HttpStatusCode.Forbidden, "Permiso Denegado: Error de API.");
+            }
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var datos = DataService.Cargar();
             incidencia.Id = DataService.GenerarId(datos);
             incidencia.FechaCreacion = DateTime.Now;
+
+            // Establecer estado y comentario por defecto para nuevas incidencias
+            incidencia.Estado = "Abierto";
+            incidencia.ComentarioAdmin = null;
 
             datos.Add(incidencia);
             DataService.Guardar(datos);
@@ -44,10 +57,12 @@ namespace IncidenciasSystem.Controllers
             return Ok(incidencia);
         }
 
-        // PUT: api/Incidencias/5 (Editar)
+        // PUT: api/Incidencias/5 (Editar y Cerrar)
         public IHttpActionResult Put(int id, Incidencia incidencia)
         {
-            if (!EsAdmin()) return Content(HttpStatusCode.Forbidden, "Solo Administradores.");
+            // Obtener el rol del encabezado
+            string rol = Request.Headers.Contains("Rol-Usuario") ? Request.Headers.GetValues("Rol-Usuario").FirstOrDefault() : "";
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var datos = DataService.Cargar();
@@ -55,12 +70,48 @@ namespace IncidenciasSystem.Controllers
 
             if (index == -1) return NotFound();
 
-            datos[index].Titulo = incidencia.Titulo;
-            datos[index].Descripcion = incidencia.Descripcion;
-            datos[index].Prioridad = incidencia.Prioridad;
+            var incidenciaExistente = datos[index];
+
+            // --- LÓGICA DE PERMISOS DE EDICIÓN ---
+            if (rol == "Admin")
+            {
+                // El administrador puede cambiar TODOS los campos, incluyendo Estado y Comentario.
+                // Asumimos que todos los campos relevantes de la incidencia vienen en la solicitud.
+                incidenciaExistente.Titulo = incidencia.Titulo;
+                incidenciaExistente.Descripcion = incidencia.Descripcion;
+                incidenciaExistente.Prioridad = incidencia.Prioridad;
+
+                // El admin puede modificar el Estado y el Comentario
+                incidenciaExistente.Estado = incidencia.Estado;
+                incidenciaExistente.ComentarioAdmin = incidencia.ComentarioAdmin;
+            }
+            else if (rol == "Usuario")
+            {
+                // El usuario solo puede modificar su propia incidencia si está Abierta
+                bool esSuIncidencia = incidenciaExistente.NombreUsuario == incidencia.NombreUsuario;
+                bool estaAbierta = incidenciaExistente.Estado == "Abierto";
+
+                if (!esSuIncidencia || !estaAbierta)
+                {
+                    return Content(HttpStatusCode.Forbidden, "Permiso Denegado: No puedes editar esta incidencia.");
+                }
+
+                // El usuario solo puede modificar campos básicos
+                incidenciaExistente.Titulo = incidencia.Titulo;
+                incidenciaExistente.Descripcion = incidencia.Descripcion;
+                incidenciaExistente.Prioridad = incidencia.Prioridad;
+
+                // No puede modificar Estado ni ComentarioAdmin
+            }
+            else
+            {
+                // Rol no reconocido o vacío
+                return Content(HttpStatusCode.Forbidden, "Permiso Denegado: Rol inválido.");
+            }
+            // --- FIN DE LÓGICA DE PERMISOS ---
 
             DataService.Guardar(datos);
-            return Ok(datos[index]);
+            return Ok(incidenciaExistente);
         }
 
         // DELETE: api/Incidencias/5
