@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "Titulo": "Mi laptop no se conecta a internet",
+    "Descripcion": "Desde ayer no tengo red en mi laptop, ya revisé el cable ethernet y todo está bien.",
+    "Prioridad": "Baja",
+    "FechaCreacion": "2025-12-06T12:56:45.6543603-05:00"
+  },
+  {
+    "Id": 2,
+    "Titulo": "No puedo ingresar a mi cuenta office",
+    "Descripcion": "Aparece un mensaje diciendo que no tengo acceso al recurso.",
+    "Prioridad": "Baja",
+    "FechaCreacion": "2025-12-06T13:07:40.4575478-05:00"
+  },
+  {
+    "Id": 3,
+    "Titulo": "No puedo usar mi cuenta profesional para ingresar a las páginas del trabajo",
+    "Descripcion": "Me aparece solamente la opción para usar mi cuenta personal y no puedo trabajar.",
+    "Prioridad": "Alta",
+    "FechaCreacion": "2025-12-06T13:09:06.4459949-05:00"
+  },
+  {
+    "Id": 4,
+    "Titulo": "Toda el área no tiene conexión a internet",
+    "Descripcion": "Desde la mañana ninguna laptop tiene red y estamos retrasados en los procesos.",
+    "Prioridad": "Alta",
+    "FechaCreacion": "2025-12-06T13:09:36.0313227-05:00"
+  },
+  {
+    "Id": 5,
+    "Titulo": "Informe inventario equipos",
+    "Descripcion": "Requiero el informe actualizado de los equipos que se tienen en el proyecto para la reunión del día jueves 18 de diciembre.",
+    "Prioridad": "Media",
+    "FechaCreacion": "2025-12-06T13:10:55.5704286-05:00"
+  }
+]
